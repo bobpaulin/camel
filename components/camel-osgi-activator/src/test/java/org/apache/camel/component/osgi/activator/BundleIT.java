@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.camel.itest.karaf.main;
+package org.apache.camel.component.osgi.activator;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -57,38 +57,32 @@ public class BundleIT {
                 PaxExamOptions.KARAF.option(),
                 PaxExamOptions.CAMEL_CORE_OSGI.option(),
                 streamBundle(
-                    TinyBundles.bundle()
-                        .read(
-                            Files.newInputStream(
-                                Paths.get("target/test-bundles")
-                                    .resolve("camel-core-osgi-activator.jar")))
-                        .build()),
+                        TinyBundles.bundle()
+                            .read(
+                                Files.newInputStream(
+                                    Paths.get("target/test-bundles")
+                                        .resolve("camel-osgi-activator.jar")))
+                            .build()),
                 junitBundles());
     }
     
     @Test
     public void testBundleLoaded() throws Exception {
-        boolean hasCore = false;
         boolean hasOsgi = false;
         boolean hasCamelCoreOsgiActivator = false;
         for (Bundle b : bc.getBundles()) {
-            if ("org.apache.camel.camel-core".equals(b.getSymbolicName())) {
-                hasCore = true;
-                assertEquals("Camel Core not activated", Bundle.ACTIVE, b.getState());
-            }
             if ("org.apache.camel.camel-core-osgi".equals(b.getSymbolicName())) {
                 hasOsgi = true;
                 assertEquals("Camel Core OSGi not activated", Bundle.ACTIVE, b.getState());
             }
             
-            if ("org.apache.camel.camel-core-osgi-activator".equals(b.getSymbolicName())) {
+            if ("org.apache.camel.camel-osgi-activator".equals(b.getSymbolicName())) {
                 hasCamelCoreOsgiActivator = true;
-                assertEquals("Camel Core OSGi Activator not activated", Bundle.ACTIVE, b.getState());
+                assertEquals("Camel OSGi Activator not activated", Bundle.ACTIVE, b.getState());
             }
         }
-        assertTrue("Camel Core bundle not found", hasCore);
         assertTrue("Camel Core OSGi bundle not found", hasOsgi);
-        assertTrue("Camel Core OSGi Activator bundle not found", hasCamelCoreOsgiActivator);
+        assertTrue("Camel OSGi Activator bundle not found", hasCamelCoreOsgiActivator);
     }
 
     @Test

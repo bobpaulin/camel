@@ -1968,6 +1968,10 @@
     <bundle dependency='true'>wrap:mvn:io.opentracing.contrib/opentracing-tracerresolver/${opentracing-tracerresolver-version}</bundle>
     <bundle>mvn:org.apache.camel/camel-opentracing/${project.version}</bundle>
   </feature>
+  <feature name='camel-osgi-activator' version='${project.version}' start-level='50'>
+    <feature version='${project.version}'>camel-core</feature>
+    <bundle>mvn:org.apache.camel/camel-osgi-activator/${project.version}</bundle>
+  </feature>
   <feature name='camel-paho' version='${project.version}' start-level='50'>
     <feature version='${project.version}'>camel-core</feature>
     <bundle>mvn:org.eclipse.paho/org.eclipse.paho.client.mqttv3/${paho-version}</bundle>

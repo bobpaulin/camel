@@ -135,7 +135,7 @@
                         <feature>camel|camel-(?!(ignite|nats|pgevent|script-groovy|spring-redis|spring-security|cdi))*</feature>
                     </features>
                 </configuration>
-                <executions>
+               <!--  <executions>
                     <execution>
                         <id>validate</id>
                         <phase>process-resources</phase>
@@ -143,7 +143,7 @@
                             <goal>verify</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions> -->
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.wagon</groupId>

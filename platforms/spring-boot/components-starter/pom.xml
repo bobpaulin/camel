@@ -298,6 +298,7 @@
     <module>camel-openstack-starter</module>
     <module>camel-opentracing-starter</module>
     <module>camel-optaplanner-starter</module>
+    <module>camel-osgi-activator-starter</module>
     <module>camel-paho-starter</module>
     <module>camel-pdf-starter</module>
     <module>camel-pg-replication-slot-starter</module>
